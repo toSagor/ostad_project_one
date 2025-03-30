@@ -7,6 +7,25 @@
 //footer widget style
 .#{$theme-prefix}-footer{
     &-widget{
+        & ul{
+            & li{
+                list-style: none;
+                &:not(:last-of-type){
+                    margin-bottom: 10px;
+                }
+                & a{
+                    position: relative;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: rgba(245, 245, 250, 0.65);
+                    &:hover{
+                        letter-spacing: 0.5px;
+                        color: var(--tp-common-white);
+                    }
+                }
+            }
+        }
+        
         &-border{
             padding-bottom: 45px;
             border-bottom: 1px solid rgba(230, 230, 230, 0.15);

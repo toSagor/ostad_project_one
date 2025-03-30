@@ -1,5 +1,16 @@
 <?php
 
+// Main menu for solub 
+function solub_main_menu(){
+    wp_nav_menu(array(
+        'theme_location' => 'main-menu',
+        'container'     => '',
+        'menu_class'    => '',
+        'fallback_cb'   => 'Solub_Walker_Nav_Menu::fallback',
+        'walker'        => new Solub_Walker_Nav_Menu,
+    ));
+}
+
 function solub_header_logo() {
     $black_logo = get_theme_mod('solub_black_logo', get_template_directory_uri().'/assets/img/logo/logo-black.png');
     ?>
@@ -26,5 +37,13 @@ function solub_header_social() {
     <?php if ($social_pin): ?>
     <a href="<?php echo esc_url($social_pin); ?>"><i class="fa-brands fa-pinterest"></i></a>
     <?php endif; ?>
-<?php } ?>
+<?php 
+} 
+
+function solub_footer_copyright() { 
+    $footer_copyright = get_theme_mod('footer_copyright', __('Copyright © 2024 Solub. All Rights Reserved.', 'solub'));
+?>
+    <p><?php echo esc_html($footer_copyright); ?></p>
+<?php 
+}
 

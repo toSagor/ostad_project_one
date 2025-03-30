@@ -40,8 +40,7 @@ function solub_setup() {
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu',      'solub' ),
-		'social'  => __( 'Social Links Menu', 'solub' ),
+		'main-menu' => __( 'Primary Menu',      'solub' ),
 	) );
 
 	/*
@@ -63,6 +62,49 @@ function solub_setup() {
 }
 endif; // solub_setup
 add_action( 'after_setup_theme', 'solub_setup' );
+
+/**
+ * Widgets init
+ */
+function solub_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget 01', 'solub' ),
+		'id'            => 'footer-1',
+		'description'   => __( 'This widget area is for footer widget 01', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget tp-footer-col-1 mb-50 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget 02', 'solub' ),
+		'id'            => 'footer-2',
+		'description'   => __( 'This widget area is for footer widget 02', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget tp-footer-col-2 mb-50 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget 03', 'solub' ),
+		'id'            => 'footer-3',
+		'description'   => __( 'This widget area is for footer widget 03', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget tp-footer-col-3 mb-50 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget 04', 'solub' ),
+		'id'            => 'footer-4',
+		'description'   => __( 'This widget area is for footer widget 04', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget tp-footer-col-4 mb-50 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-widget-title">',
+		'after_title'   => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'solub_widgets_init' );
 
 // Solub Theme Scripts
 function solub_theme_scripts() {
@@ -96,5 +138,8 @@ function solub_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'solub_theme_scripts' );
 
 // Solub Theme Customizer
+if ( class_exists( 'Kirki' ) ) {
 require_once('inc/solub-kirki.php');
+}
 require_once('inc/template-function.php');
+require_once('inc/nav-walker.php');
