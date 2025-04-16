@@ -1,9 +1,23 @@
+<?php 
+    $post_format_url = function_exists('get_field') ? get_field('format_url') : '';
+?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class('tp-postbox-item mb-75'); ?>>
     <?php if ( has_post_thumbnail() ) : ?>
     <div class="tp-postbox-thumb p-relative">
         <a href="<?php the_permalink(); ?>">
             <?php the_post_thumbnail(); ?>
         </a>
+        <?php if(!empty($post_format_url)): ?>
+        <div class="tp-postbox-thumb-video">
+            <a class="tp-video-btn popup-video text-center" href="<?php echo esc_url($post_format_url) ?>">
+            <span class="tp-text-theme-primary"><svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 11L0 21.3923V0.607696L18 11Z" fill="currentColor"></path>
+                </svg>
+            </span>
+            </a>
+        </div>
+        <?php endif; ?>
     </div>
     <?php endif; ?>
     <div class="tp-postbox-content">

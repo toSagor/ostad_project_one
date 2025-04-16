@@ -1,9 +1,11 @@
+<?php 
+    $post_format_url = function_exists('get_field') ? get_field('format_url') : '';
+?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class('tp-postbox-item mb-75'); ?>>
     <?php if ( has_post_thumbnail() ) : ?>
-    <div class="tp-postbox-thumb p-relative">
-        <a href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail(); ?>
-        </a>
+    <div class="tp-postbox-thumb p-relative ratio ratio-16x9">
+        <?php echo wp_oembed_get($post_format_url); ?>
     </div>
     <?php endif; ?>
     <div class="tp-postbox-content">
