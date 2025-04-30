@@ -64,9 +64,18 @@ endif; // solub_setup
 add_action( 'after_setup_theme', 'solub_setup' );
 
 /**
- * Widgets init
+ * Solub widget area
  */
 function solub_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Blog Sidebar', 'solub' ),
+		'id'            => 'blog-sidebar',
+		'description'   => __( 'This widget area is for Blog Sidebar', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-sidebar-widget mb-45 %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-sidebar-widget-title">',
+		'after_title'   => '</h3>',
+	) );
 	register_sidebar( array(
 		'name'          => __( 'Footer Widget 01', 'solub' ),
 		'id'            => 'footer-1',
@@ -131,6 +140,7 @@ function solub_theme_scripts() {
     wp_enqueue_script( 'isotope-pkgd', get_template_directory_uri() . '/assets/js/isotope-pkgd.js', array( 'imagesloaded' ), 1.1, true );
     wp_enqueue_script( 'solub-main', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), 1.1, true );
 
+	// Traded Comment Ative
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -143,3 +153,33 @@ require_once('inc/solub-kirki.php');
 }
 require_once('inc/template-function.php');
 require_once('inc/nav-walker.php');
+require_once('inc/solub-recent-post.php');
+require_once('inc/solub-cat-list.php');
+require_once('inc/beadcrumb.php');
+
+
+
+/**
+ * Generate custom search form
+ *
+ * @param string $form Form HTML.
+ * @return string Modified form HTML.
+ */
+function solub_search_form( $form ) {
+	$form = '<div class="tp-sidebar-widget-content">
+				<div class="tp-sidebar-search">
+					<form action="' . home_url( '/' ) . '">
+					<div class="tp-sidebar-search-input p-relative">
+						<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . __( 'Enter your keywords...' ) . '">
+						<button class="tp-sidebar-search-btn" type="submit" id="searchsubmit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path d="M9.55005 18.1001C14.2721 18.1001 18.1001 14.2721 18.1001 9.55005C18.1001 4.82799 14.2721 1 9.55005 1C4.82799 1 1 4.82799 1 9.55005C1 14.2721 4.82799 18.1001 9.55005 18.1001Z" stroke="#1F2220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M18.9992 19L17.1992 17.2" stroke="#1F2220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg></button>
+					</div>
+					</form>
+				</div>
+			</div>';
+
+	return $form;
+}
+add_filter( 'get_search_form', 'solub_search_form' );

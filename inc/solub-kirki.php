@@ -192,3 +192,31 @@ function solub_footer_section() {
 // Call the solub_footer_section function
 solub_footer_section();
 
+// Footer Section Fuction
+function solub_beadcrumb_section() {
+
+	// Solub header topbar section
+	new \Kirki\Section(
+		'solub_beadcrumb',
+		[
+			'title'       => esc_html__( 'Beadcrumb', 'solub' ),
+			'description' => esc_html__( 'Beadcrumb Info Section.', 'solub' ),
+			'panel'       => 'solub_panel',
+			'priority'    => 160,
+		]
+	);
+	
+	new \Kirki\Field\Image(
+		[
+			'settings'    => 'beadcrumb_imag',
+			'label'       => esc_html__( 'Beadcrumb Image', 'solub' ),
+			'description' => esc_html__( 'Please upload your beadcrumb image', 'solub' ),
+			'section'     => 'solub_beadcrumb',
+			'default'     => get_template_directory_uri() .'/assets/img/logo/logo-black.png',
+		]
+	);
+}
+
+// Call the solub_footer_section function
+solub_beadcrumb_section();
+

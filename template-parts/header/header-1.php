@@ -18,7 +18,7 @@
       <div class="offcanvas__content">
          <div class="offcanvas__top mb-40">
             <div class="offcanvas__logo">
-               <a href="index.html">
+               <a href="<?php echo get_site_url(); ?>">
                   <img data-width="120" src="assets/img/logo/logo-white.png" alt="logo">
                </a>
             </div>

@@ -5,15 +5,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="tp-postbox-wrapper">
+                <div class="postbox-details-wrapper">
                 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                     <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
-                <?php endwhile; endif; ?>
-                <div class="tp-pagination pt-30">
-                    <nav>
-                        <?php solub_pagination() ?>
-                    </nav>
-                </div>
+
+                    <?php echo get_template_part('template-parts/biography'); ?>
+
+                    <?php if ( comments_open() || get_comments_number() ) :
+                            comments_template();
+                    endif; ?> 
+                    
+                <?php endwhile; ?>
+                <?php endif; ?>
 
                 </div>
             </div>

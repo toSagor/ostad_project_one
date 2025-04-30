@@ -37,3 +37,5 @@
       <!-- back to top end -->
 
       <?php get_template_part( 'template-parts/header/header-1' ); ?>
+
+      <?php solub_beadcrumb(); ?>

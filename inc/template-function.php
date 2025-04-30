@@ -67,3 +67,37 @@ function solub_footer_social() {
     <?php endif; ?>
 <?php 
 } }
+
+// Solub Tags
+function solub_tags(){
+    // Getting Tags Data
+	$post_tags = get_the_tags();
+
+    if ($post_tags) {
+        foreach ($post_tags as $item) {
+            ?>
+            <a href="<?php echo get_tag_link($item); ?>"><?php echo esc_html( $item->name); ?></a>
+            <?php
+        }
+    } else {
+        ?>
+        <i>No tags found</i>
+        <?php
+    }
+}
+
+// solub_pagination 
+function solub_pagination(){
+    $pages = paginate_links( array( 
+        'type' => 'array',
+        'prev_text'    => __('<i class="fal fa-long-arrow-left"></i>','solub'),
+        'next_text'    => __('<i class="fal fa-long-arrow-right"></i>','solub'),
+    ) );
+        if( $pages ) {
+        echo '<ul>';
+        foreach ( $pages as $page ) {
+            echo "<li>$page</li>";
+        }
+        echo '</ul>';
+    }
+}
