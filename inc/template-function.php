@@ -14,7 +14,7 @@ function solub_main_menu(){
 function solub_header_logo() {
     $black_logo = get_theme_mod('solub_black_logo', get_template_directory_uri().'/assets/img/logo/logo-black.png');
     ?>
-    <a href="index.html">
+    <a href="<?php home_url(); ?>">
         <img data-width="130" src="<?php echo esc_url($black_logo); ?>" alt="<?php echo esc_attr__('Black Logo', 'solub'); ?>">
     </a>
 <?php }
