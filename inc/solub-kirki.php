@@ -164,15 +164,15 @@ function solub_header_section() {
 // Call the solub_header_section function
 solub_header_section();
 
-// Beadcrumb Section Fuction
-function solub_beadcrumb_section() {
+// Breadcrumb Section Fuction
+function solub_breadcrumb_section() {
 
 	// Solub header topbar section
 	new \Kirki\Section(
-		'solub_beadcrumb',
+		'solub_breadcrumb',
 		[
-			'title'       => esc_html__( 'Beadcrumb', 'solub' ),
-			'description' => esc_html__( 'Beadcrumb Info Section.', 'solub' ),
+			'title'       => esc_html__( 'Breadcrumb', 'solub' ),
+			'description' => esc_html__( 'Breadcrumb Info Section.', 'solub' ),
 			'panel'       => 'solub_panel',
 			'priority'    => 160,
 		]
@@ -180,17 +180,17 @@ function solub_beadcrumb_section() {
 	
 	new \Kirki\Field\Image(
 		[
-			'settings'    => 'beadcrumb_imag',
-			'label'       => esc_html__( 'Beadcrumb Image', 'solub' ),
-			'description' => esc_html__( 'Please upload your beadcrumb image', 'solub' ),
-			'section'     => 'solub_beadcrumb',
+			'settings'    => 'breadcrumb_img',
+			'label'       => esc_html__( 'Breadcrumb image', 'solub' ),
+			'description' => esc_html__( 'Please upload your breadcrumb image', 'solub' ),
+			'section'     => 'solub_breadcrumb',
 			'default'     => get_template_directory_uri() .'/assets/img/logo/logo-black.png',
 		]
 	);
 }
 
-// Call the solub_beadcrumb_section function
-solub_beadcrumb_section();
+// Call the solub_breadcrumb_section function
+solub_breadcrumb_section();
 
 // Footer Section Fuction
 function solub_footer_section() {
@@ -220,3 +220,50 @@ function solub_footer_section() {
 // Call the solub_footer_section function
 solub_footer_section();
 
+// 404 Section Fuction
+function solub_404_section() {
+
+	// Solub header topbar section
+	new \Kirki\Section(
+		'solub_404',
+		[
+			'title'       => esc_html__( '404 Options', 'solub' ),
+			'description' => esc_html__( '404 Options Section.', 'solub' ),
+			'panel'       => 'solub_panel',
+			'priority'    => 160,
+		]
+	);
+	
+	new \Kirki\Field\Text(
+		[
+			'settings' => 'error_title',
+			'label'    => esc_html__( 'Error Page Title', 'solub' ),
+			'section'  => 'solub_404',
+			'default'  => esc_html__( '404', 'solub' ),
+			'priority' => 10,
+		]
+	);
+
+	new \Kirki\Field\Text(
+		[
+			'settings' => 'error_sub_title',
+			'label'    => esc_html__( 'Error Page Sub Title', 'solub' ),
+			'section'  => 'solub_404',
+			'default'  => esc_html__( 'Oops! Page not found', 'solub' ),
+			'priority' => 10,
+		]
+	);
+
+	new \Kirki\Field\Text(
+		[
+			'settings' => 'error_detail',
+			'label'    => esc_html__( '404 Page Details', 'solub' ),
+			'section'  => 'solub_404',
+			'default'  => esc_html__( 'Whoops, this is embarassing. Looks like the page you were looking for wasn\'t found.', 'solub' ),
+			'priority' => 10,
+		]
+	);
+}
+
+// Call the solub_404_section function
+solub_404_section();

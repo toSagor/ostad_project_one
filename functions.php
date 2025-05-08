@@ -155,7 +155,7 @@ require_once('inc/template-function.php');
 require_once('inc/nav-walker.php');
 require_once('inc/solub-recent-post.php');
 require_once('inc/solub-cat-list.php');
-require_once('inc/beadcrumb.php');
+require_once('inc/breadcrumb.php');
 
 
 
@@ -183,3 +183,4 @@ function solub_search_form( $form ) {
 	return $form;
 }
 add_filter( 'get_search_form', 'solub_search_form' );
+
